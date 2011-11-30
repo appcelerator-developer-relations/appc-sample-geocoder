@@ -1,3 +1,5 @@
+var GOOGLE_BASE_URL = 'http://maps.googleapis.com/maps/geo?output=json&q=';
+
 var win = Ti.UI.createWindow({
 	backgroundColor: '#fff',
 	fullscreen: false,
@@ -5,11 +7,11 @@ var win = Ti.UI.createWindow({
 });
 var view = Ti.UI.createView({
 	backgroundColor: '#800',
-	height: '40dp',
+	height: '50dp',
 	top: 0
 });
 var textfield = Ti.UI.createTextField({
-	height: '30dp',
+	height: '40dp',
 	top: '5dp',
 	left: '5dp',
 	right: '50dp',
@@ -23,7 +25,8 @@ var button = Ti.UI.createButton({
 		fontSize: '20dp',
 		fontWeight: 'bold'	
 	},
-	height: '30dp',
+	top: '5dp',
+	height: '40dp',
 	width: '40dp',
 	right: '5dp'
 });
@@ -34,9 +37,28 @@ var mapview = Titanium.Map.createView({
     animate:true,
     regionFit:true,
     userLocation:false,
-    top: '40dp'
+    top: '50dp'
 });
 
+// Handle + button click
+button.addEventListener('click', function() {	
+	textfield.blur();
+	xhr = Titanium.Network.createHTTPClient();
+	xhr.open('GET', GOOGLE_BASE_URL + textfield.value);
+	xhr.onload = function() {
+	    var json = JSON.parse(this.responseText);
+	    mapview.addAnnotation({
+	    	animate: true,
+	    	pincolor: Titanium.Map.ANNOTATION_RED,
+	    	title: textfield.value,
+	    	latitude: json.Placemark[0].Point.coordinates[1],
+	    	longitude: json.Placemark[0].Point.coordinates[0]	
+	    });
+	};
+	xhr.send();
+});
+
+// Assemble view hierarchy
 view.add(textfield);
 view.add(button);
 win.add(view);

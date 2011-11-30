@@ -22,7 +22,8 @@ exports.ApplicationWindow = function() {
 		right: '50dp',
 		style: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		hintText: 'Enter an address',
-		backgroundColor: '#fff'
+		backgroundColor: '#fff',
+		paddingLeft: '5dp'
 	});
 	var button = Ti.UI.createButton({
 		title: '+',

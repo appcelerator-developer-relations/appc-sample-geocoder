@@ -9,7 +9,7 @@ exports.ApplicationWindow = function() {
 		exitOnClose: true
 	});
 
-	//construct UI
+	// create UI components
 	var view = Ti.UI.createView({
 		backgroundColor: '#800',
 		height: '50dp',
@@ -62,11 +62,13 @@ exports.ApplicationWindow = function() {
 		self.add(mapview);
 	});
 	
+	// Execute forward geocode on button click
 	button.addEventListener('click', function() {	
 		textfield.blur();
 		geo.forwardGeocode(textfield.value);
 	});
 	
+	// Add annotation and change mapview location
 	Ti.App.addEventListener('app:geocode', function(e) {
 		mapview.addAnnotation(Ti.Map.createAnnotation({
 		    	animate: true,
@@ -78,6 +80,7 @@ exports.ApplicationWindow = function() {
 	    mapview.location = e.location;
 	});
 	
+	// assemble view hierarchy
 	view.add(textfield);
 	view.add(button);
 	self.add(view);

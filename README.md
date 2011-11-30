@@ -1,18 +1,16 @@
-Welcome to your Appcelerator Titanium Mobile Project
+# Sample.Mapping
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
+This is a Titanium Mobile sample app that uses native maps to plot locations. With it you can forward geocode addresses and add them as annotations to the map.
 
+### Topics Covered
 
+* Using native maps with `Titanium.Map`
+* Adding annonations to native maps
+* Remote Data acccess via `Titanium.Network.HTTPClient`
+* Modular Javascript with CommonJS
+* Cross-platform design
 
-----------------------------------
-Stuff our legal folk make us say:
+### Documentation Links
 
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
-
-Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc. All Rights Reserved.
-
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
-
+* [Wiki: Location Services](http://wiki.appcelerator.org/display/guides/Location+Services)
+* [Blog: Android Geolocation Lifecycle events](http://developer.appcelerator.com/blog/2011/02/android-geolocation-changes-for-1-6-0.html)

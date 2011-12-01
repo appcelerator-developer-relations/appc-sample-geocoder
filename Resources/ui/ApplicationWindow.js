@@ -66,19 +66,17 @@ exports.ApplicationWindow = function() {
 	// Execute forward geocode on button click
 	button.addEventListener('click', function() {	
 		textfield.blur();
-		geo.forwardGeocode(textfield.value);
-	});
-	
-	// Add annotation and change mapview location
-	Ti.App.addEventListener('app:geocode', function(e) {
-		mapview.addAnnotation(Ti.Map.createAnnotation({
+		geo.forwardGeocode(textfield.value, function(geodata) {
+			Ti.API.info('in callback');
+			mapview.addAnnotation(Ti.Map.createAnnotation({
 		    	animate: true,
 		    	pincolor: Titanium.Map.ANNOTATION_RED,
-		    	title: e.title,
-		    	latitude: e.coords.latitude,
-		    	longitude: e.coords.longitude
-	    })); 
-	    mapview.location = e.location;
+		    	title: geodata.title,
+		    	latitude: geodata.coords.latitude,
+		    	longitude: geodata.coords.longitude
+		    })); 
+		    mapview.setLocation(geodata.location);
+		});
 	});
 	
 	// assemble view hierarchy

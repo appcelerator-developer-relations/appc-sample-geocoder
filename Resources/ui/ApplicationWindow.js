@@ -53,13 +53,24 @@ exports.ApplicationWindow = function() {
 		    userLocation:false,
 		    top: '50dp'
 		});
-		mapview.addAnnotation(createCustomAnnotation(mapview, {
+		
+		// Add initial annotation
+		mapview.addAnnotation(Ti.Map.createAnnotation({
 			animate: true,
 			pincolor: Titanium.Map.ANNOTATION_RED,
 			title: 'Appcelerator',
 			latitude: geo.LATITUDE_BASE,
-			longitude: geo.LONGITUDE_BASE
+			longitude: geo.LONGITUDE_BASE,
+			leftButton: 'delete.png'
 		}));
+		
+		// Handle all map annotation clicks
+		mapview.addEventListener('click', function(e) {
+			Ti.API.info('clicked map');
+	        if (e.annotation && e.clicksource === 'leftButton') {    
+	            mapview.removeAnnotation(e.annotation);
+	        }         
+		});
 		self.add(mapview);
 	});
 	
@@ -67,12 +78,13 @@ exports.ApplicationWindow = function() {
 	button.addEventListener('click', function() {	
 		textfield.blur();
 		geo.forwardGeocode(textfield.value, function(geodata) {
-			mapview.addAnnotation(createCustomAnnotation(mapview, {
+			mapview.addAnnotation(Ti.Map.createAnnotation({
 		    	animate: true,
 		    	pincolor: Titanium.Map.ANNOTATION_RED,
 		    	title: geodata.title,
 		    	latitude: geodata.coords.latitude,
-		    	longitude: geodata.coords.longitude
+		    	longitude: geodata.coords.longitude,
+		    	leftButton: 'delete.png'
 		    })); 
 		    mapview.setLocation({
 		    	latitude: geodata.coords.latitude, 
@@ -89,23 +101,4 @@ exports.ApplicationWindow = function() {
 	self.add(view);
 	
 	return self;
-};
-
-var createCustomAnnotation = function(mapview, args) {
-	var button = Ti.UI.createButton({
-		title: 'X',
-		height: '25dp',
-		width: '25dp',
-		color: '#f00',
-		font: {
-			fontSize: '18dp',
-			fontWeight: 'bold'	
-		}
-	});
-	args.leftView = button;
-	var annotation = Ti.Map.createAnnotation(args);
-	button.addEventListener('click', function(e) {
-		mapview.removeAnnotation(annotation);
-	});
-	return annotation;
 };

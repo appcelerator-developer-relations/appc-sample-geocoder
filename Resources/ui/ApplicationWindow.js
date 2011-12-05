@@ -43,8 +43,8 @@ exports.ApplicationWindow = function() {
 		mapview = Titanium.Map.createView({
 		    mapType: Titanium.Map.STANDARD_TYPE,
 		    region: {
-		    		latitude: geo.LATITUDE_BASE, 
-		    		longitude: geo.LONGITUDE_BASE,
+	    		latitude: geo.LATITUDE_BASE, 
+	    		longitude: geo.LONGITUDE_BASE,
 		        latitudeDelta: 0.1, 
 		        longitudeDelta: 0.1
 		    },
@@ -53,7 +53,7 @@ exports.ApplicationWindow = function() {
 		    userLocation:false,
 		    top: '50dp'
 		});
-		mapview.addAnnotation(Ti.Map.createAnnotation({
+		mapview.addAnnotation(createCustomAnnotation(mapview, {
 			animate: true,
 			pincolor: Titanium.Map.ANNOTATION_RED,
 			title: 'Appcelerator',
@@ -67,15 +67,19 @@ exports.ApplicationWindow = function() {
 	button.addEventListener('click', function() {	
 		textfield.blur();
 		geo.forwardGeocode(textfield.value, function(geodata) {
-			Ti.API.info('in callback');
-			mapview.addAnnotation(Ti.Map.createAnnotation({
+			mapview.addAnnotation(createCustomAnnotation(mapview, {
 		    	animate: true,
 		    	pincolor: Titanium.Map.ANNOTATION_RED,
 		    	title: geodata.title,
 		    	latitude: geodata.coords.latitude,
 		    	longitude: geodata.coords.longitude
 		    })); 
-		    mapview.setLocation(geodata.location);
+		    mapview.setLocation({
+		    	latitude: geodata.coords.latitude, 
+		    	longitude: geodata.coords.longitude,
+		        latitudeDelta: 1, 
+		        longitudeDelta: 1
+		    });
 		});
 	});
 	
@@ -85,4 +89,23 @@ exports.ApplicationWindow = function() {
 	self.add(view);
 	
 	return self;
+};
+
+var createCustomAnnotation = function(mapview, args) {
+	var button = Ti.UI.createButton({
+		title: 'X',
+		height: '25dp',
+		width: '25dp',
+		color: '#f00',
+		font: {
+			fontSize: '18dp',
+			fontWeight: 'bold'	
+		}
+	});
+	args.leftView = button;
+	var annotation = Ti.Map.createAnnotation(args);
+	button.addEventListener('click', function(e) {
+		mapview.removeAnnotation(annotation);
+	});
+	return annotation;
 };

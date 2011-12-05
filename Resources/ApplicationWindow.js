@@ -39,7 +39,7 @@ exports.ApplicationWindow = function() {
 	var mapview;
 	
 	// add map after window opens
-	self.addEventListener('open', function(e) {
+	self.addEventListener('open', function() {
 		mapview = Titanium.Map.createView({
 		    mapType: Titanium.Map.STANDARD_TYPE,
 		    region: {
@@ -61,13 +61,14 @@ exports.ApplicationWindow = function() {
 			title: 'Appcelerator',
 			latitude: geo.LATITUDE_BASE,
 			longitude: geo.LONGITUDE_BASE,
-			leftButton: 'delete.png'
+			leftButton: 'images/delete.png'
 		}));
 		
 		// Handle all map annotation clicks
 		mapview.addEventListener('click', function(e) {
 			Ti.API.info('clicked map');
-	        if (e.annotation && e.clicksource === 'leftButton') {    
+			Ti.API.info(e.clicksource);
+	        if (e.annotation && (e.clicksource === 'leftButton' || e.clicksource == 'leftPane')) {    
 	            mapview.removeAnnotation(e.annotation);
 	        }         
 		});
@@ -84,7 +85,7 @@ exports.ApplicationWindow = function() {
 		    	title: geodata.title,
 		    	latitude: geodata.coords.latitude,
 		    	longitude: geodata.coords.longitude,
-		    	leftButton: 'delete.png'
+		    	leftButton: 'images/delete.png'
 		    })); 
 		    mapview.setLocation({
 		    	latitude: geodata.coords.latitude, 

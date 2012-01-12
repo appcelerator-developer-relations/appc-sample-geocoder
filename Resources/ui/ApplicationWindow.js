@@ -40,6 +40,11 @@ exports.ApplicationWindow = function() {
 	
 	// add map after window opens
 	self.addEventListener('open', function() {
+		// Make sure we only add the map once
+		if (mapview !== undefined) {
+			return;	
+		}
+		
 		mapview = Titanium.Map.createView({
 		    mapType: Titanium.Map.STANDARD_TYPE,
 		    region: {

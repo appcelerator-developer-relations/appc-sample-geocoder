@@ -71,8 +71,6 @@ exports.ApplicationWindow = function() {
 		
 		// Handle all map annotation clicks
 		mapview.addEventListener('click', function(e) {
-			//Ti.API.info('clicked map');
-			//Ti.API.info(e.clicksource);
 	        if (e.annotation && (e.clicksource === 'leftButton' || e.clicksource == 'leftPane')) {    
 	            mapview.removeAnnotation(e.annotation);
 	        }         
@@ -84,9 +82,6 @@ exports.ApplicationWindow = function() {
 	button.addEventListener('click', function() {	
 		textfield.blur();
 		geo.forwardGeocode(textfield.value, function(geodata) {
-			// Ti.API.info(geodata.title);
-			// Ti.API.info(geodata.coords.latitude);
-			// Ti.API.info(geodata.coords.longitude);
 			mapview.addAnnotation(Ti.Map.createAnnotation({
 		    	animate: true,
 		    	pincolor: Titanium.Map.ANNOTATION_RED,

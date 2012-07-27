@@ -49,8 +49,8 @@ var forwardGeocodeWeb = function(address, callback) {
         	if (status == google.maps.GeocoderStatus.OK) {
         		callback(new GeoData(
         			address, 
-        			results[0].geometry.location.Ua,
-        			results[0].geometry.location.Va
+        			results[0].geometry.location.lat(),
+        			results[0].geometry.location.lng()
         		));
          	} else {
          		Ti.API.error(status);

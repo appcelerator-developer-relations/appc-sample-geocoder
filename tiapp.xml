@@ -40,5 +40,8 @@
     <mobileweb>
         <theme>default</theme>
     </mobileweb>
-    <modules/>
+    <modules>
+        <module platform="android">ti.map</module>
+        <module platform="iphone">ti.map</module>
+    </modules>
 </ti:app>

@@ -1,3 +1,5 @@
+Ti.Map = require('ti.map');
+
 //Application Window Component Constructor
 exports.ApplicationWindow = function() {
 function isiOS7Plus()

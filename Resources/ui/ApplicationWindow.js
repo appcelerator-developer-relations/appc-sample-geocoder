@@ -65,7 +65,7 @@ var theTop = iOS7 ? 20 : 0;
 		}
 
 		mapview = Titanium.Map.createView({
-			mapType: Titanium.Map.STANDARD_TYPE,
+			mapType: Titanium.Map.NORMAL_TYPE,
 			region: {
 				latitude: geo.LATITUDE_BASE,
 				longitude: geo.LONGITUDE_BASE,

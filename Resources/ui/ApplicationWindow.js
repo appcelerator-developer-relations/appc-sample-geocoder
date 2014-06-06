@@ -1,4 +1,4 @@
-Ti.Map = require('ti.map');
+Ti.Map || (Ti.Map = require('ti.map'));
 
 //Application Window Component Constructor
 exports.ApplicationWindow = function() {

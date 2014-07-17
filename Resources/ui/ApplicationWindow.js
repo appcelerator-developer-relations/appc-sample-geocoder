@@ -1,5 +1,4 @@
-if (Titanium.Platform.osname != 'mobileweb')
-{
+if (Titanium.Platform.osname != 'mobileweb') {
 	Ti.Map = require('ti.map');
 }
 

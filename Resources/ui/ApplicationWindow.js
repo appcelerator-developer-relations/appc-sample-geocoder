@@ -1,4 +1,7 @@
-Ti.Map || (Ti.Map = require('ti.map'));
+if (Titanium.Platform.osname != 'mobileweb')
+{
+	Ti.Map = require('ti.map');
+}
 
 //Application Window Component Constructor
 exports.ApplicationWindow = function() {

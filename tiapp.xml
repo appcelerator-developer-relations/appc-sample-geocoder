@@ -24,7 +24,6 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
-    <guid></guid>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>

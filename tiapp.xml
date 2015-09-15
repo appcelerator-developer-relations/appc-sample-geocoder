@@ -10,6 +10,7 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <id>com.appcelerator.sample.mapping</id>
+    <guid>11111111-1111-1111-1111-111111111111</guid>
     <name>Geocoder</name>
     <version>1.0</version>
     <publisher>tlukasavage</publisher>

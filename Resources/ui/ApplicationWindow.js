@@ -44,6 +44,7 @@ var theTop = iOS7 ? 20 : 0;
 		style: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		hintText: 'Enter an address',
 		backgroundColor: '#fff',
+		color: 'black',
 		paddingLeft: '5dp'
 	});
 	var button = Ti.UI.createButton({

@@ -1,7 +1,7 @@
 var GOOGLE_BASE_URL = 'http://maps.google.com/maps/api/geocode/json?address=';
 var ERROR_MESSAGE = 'There was an error geocoding. Please try again.';
-exports.LATITUDE_BASE = 37.389569;
-exports.LONGITUDE_BASE = -122.050212;
+exports.LATITUDE_BASE = 37.368344;
+exports.LONGITUDE_BASE = -121.913669;
 
 var GeoData = function(title, latitude, longitude) {
 	this.title = title;

@@ -1,5 +1,5 @@
-# Titanium Alloy Geocoder Sample
-This is a Titanium Mobile sample app that uses native maps to plot locations. With it you can forward geocode addresses to add them as annotations, and reverse geocode your current position or via a longpress on the map.
+# Titanium Geocoder Sample
+This is a Titanium sample app demonstrating maps, geolocation and (reverse) geocoding. Enter an address to geocode or longpress on the map to reverse geocode and drop a pin on the map. As you start the app your current location will be marked with a pin which displays the reverse geocoded address.
 
 ![screenshots](documentation/screenshots.png)
 
@@ -8,7 +8,7 @@ As you'll [see](app/controllers/index.js) the code is heavily documented to tell
 Let's run through some of the main topics covered.
 
 ## Custom Android Material Theme
-For Android, the app uses a [custom Android Material Theme](http://docs.appcelerator.com/platform/latest/#!/guide/Android_Themes-section-34636181_AndroidThemes-MaterialTheme). Material made it much easier to create custom Android themes and all you have to do is override some of the default colors in [platform/android/res/values/custom_theme.xml](platform/android/res/values/custom_theme.xml) and select the style name in [tiapp.xml](tiapp.xml) under *android/manifest/application@android:theme*.
+For Android, the app uses a [custom Android Material Theme](http://docs.appcelerator.com/platform/latest/#!/guide/Android_Themes-section-34636181_AndroidThemes-MaterialTheme). Material made it much easier to create custom Android themes and all you have to do is override some of the default colors in [app/platform/android/res/values/custom_theme.xml](app/platform/android/res/values/custom_theme.xml) and select the style name in [tiapp.xml](tiapp.xml) under *android/manifest/application@android:theme*.
 
 * Guide: [Android Themes](http://docs.appcelerator.com/platform/latest/#!/guide/Android_Themes)
 
@@ -67,3 +67,5 @@ Throughout the code you'll find a couple of `FIXME` or `TODO` comments. This is 
 ![screenshots](documentation/tasks.png)
 
 If you include JIRA ticker number or full URL in a `FIXME` comment, you can use the [tickets CLI](npmjs.com/tickets) to quickly scan your project and lookup the current status of the issues. A great way to see if you can remove some workarounds after a new Titanium SDK release.
+
+Code Strong! 🚀

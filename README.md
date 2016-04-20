@@ -66,6 +66,6 @@ Throughout the code you'll find a couple of `FIXME` or `TODO` comments. This is 
 
 ![screenshots](documentation/tasks.png)
 
-If you include JIRA ticker number or full URL in a `FIXME` comment, you can use the [tickets CLI](npmjs.com/tickets) to quickly scan your project and lookup the current status of the issues. A great way to see if you can remove some workarounds after a new Titanium SDK release.
+If you include JIRA ticker number or full URL in a `FIXME` comment, you can use the [tickets CLI](https://www.npmjs.com/package/tickets) to quickly scan your project and lookup the current status of the issues. A great way to see if you can remove some workarounds after a new Titanium SDK release.
 
 Code Strong! 🚀

@@ -8,19 +8,19 @@ As you'll [see](app/controllers/index.js) the code is heavily documented to tell
 Let's run through some of the main topics covered.
 
 ## Custom Android Material Theme
-For Android, the app uses a [custom Android Material Theme](http://docs.appcelerator.com/platform/latest/#!/guide/Android_Themes-section-34636181_AndroidThemes-MaterialTheme). Material made it much easier to create custom Android themes and all you have to do is override some of the default colors in [app/platform/android/res/values/custom_theme.xml](app/platform/android/res/values/custom_theme.xml) and select the style name in [tiapp.xml](tiapp.xml) under *android/manifest/application@android:theme*.
+For Android, the app uses a [custom Android Material Theme](http://docs.appcelerator.com/platform/latest/#!/guide/Android_Themes-section-34636181_AndroidThemes-MaterialTheme). Material made it much easier to create custom Android themes and all you have to do is override some of the default colors in [app/platform/android/res/values/custom_theme.xml](app/platform/android/res/values/custom_theme.xml) and select the style name in [tiapp.xml](tiapp.xml#L50) under *android/manifest/application@android:theme*.
 
 * Guide: [Android Themes](http://docs.appcelerator.com/platform/latest/#!/guide/Android_Themes)
 
 ## Config: [config.json](app/config.json)
-For iOS we wanted to make it easy to change our primary brand color as well. It's set in [app/config.json](alloy/app/config.json) under *global/brandPrimary* and read as `Alloy.CFG.brandPrimary` in [app/styles/index.tss](app/styles/index.tss) for example. As you can read in the guide, we could even set a different value for this propery based on the platform and environment the app runs on.
+For iOS we wanted to make it easy to change our primary brand color as well. It's set in [app/config.json](app/config.json) under *global/brandPrimary* and read as `Alloy.CFG.brandPrimary` in [app/styles/index.tss](app/styles/index.tss#L20) for example. As you can read in the guide, we could even set a different value for this propery based on the platform and environment the app runs on.
 
 * Guide: [Project Configuration File (config.json)](http://docs.appcelerator.com/platform/latest/#!/guide/Project_Configuration_File_(config.json))
 
 ## Globals: [alloy.js](app/alloy.js)
 Another global under Alloy is `Alloy.Globals`. This object is empty and can be populated anywhere, but in most cases you will use `alloy.js` for this. This fill end up in Titanium's bootstrap `Resources/app.js` file. Since that file is global scope, it's a best practice to wrap your code in a self-executing function.
 
-For iOS we set a global to `20dp`. We'll use this in a *Global Style* to move our content down below the statusBar, leaving the actual Window start behind it, allowing us to style it.
+For iOS we set a global to `20dp`. We'll use this in a [global style](app/styles/app.tss#L17) to move our content down below the statusBar, leaving the actual Window start behind it, allowing us to style it.
 
 * Guide [Initializer File](http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_Controllers-section-34636384_AlloyControllers-InitializerFile(alloy.js))
 
@@ -42,7 +42,7 @@ As the screenshots show, we use platform specific UI elements to provide the bes
 ## Map Module
 Since 3.2.0 the core [Ti.Map](http://docs.appcelerator.com/platform/latest/#!/api/Titanium.Map) module for Google Maps v1 has been replaced by the add-on [ti.map](http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map) module for Google Maps v2 and iOS Map Kit.
 
-To use this module, we need to add it to [tiapp.xml](tiapp.xml) and use the powerful [module attribute](http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_XML_Markup-section-35621528_AlloyXMLMarkup-ModuleAttribute) in our [index.xml](app/views/index.xml) to use the module as a view factory.
+To use this module, we need to add it to [tiapp.xml](tiapp.xml) and use the powerful [module attribute](http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_XML_Markup-section-35621528_AlloyXMLMarkup-ModuleAttribute) in our [index.xml](app/views/index.xml#L33) to use the module as a view factory.
 
 For Android, the module needs a [Google API key](http://docs.appcelerator.com/platform/latest/#!/guide/Google_Maps_v2_for_Android-section-36739898_GoogleMapsv2forAndroid-ObtainandAddaGoogleAPIKey), which is linked to the app id and keystore. The sample app includes a key for the sample app id and the bundled keystore that our SDKs default to.
 

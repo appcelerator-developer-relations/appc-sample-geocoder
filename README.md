@@ -1,5 +1,5 @@
 # Titanium Geocoder Sample
-This is a Titanium sample app demonstrating maps, geolocation and (reverse) geocoding. Enter an address to geocode or longpress on the map to reverse geocode and drop a pin on the map. As you start the app your current location will be marked with a pin which displays the reverse geocoded address.
+The sample demonstrates maps, geolocation and (reverse) geocoding. Enter an address to geocode and drop a pin on the map or longpress anywhere on the map to drop a pin displaying the reverse geocoded address. When you start the app your current location will be marked.
 
 ![screenshots](documentation/screenshots.png)
 
